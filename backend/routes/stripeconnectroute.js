@@ -1,16 +1,19 @@
 
 import express from "express"
-import { captureholdfunds, checkaccountstatus, checkpaymentstatus, createPaymentIntent, createteacheraccount, creatteacheraccountlink, getstripeapikey } from "../controller/stripeconnectcontroller.js";
+import { chargeid, checkaccountstatus,  createPaymentIntent, createteacheraccount, creatteacheraccountlink, getstripeapikey, refundcustomer, transferPayment } from "../controller/stripeconnectcontroller.js";
 
 const router=express.Router();
-router.route("/stripe/publishablekey").post(getstripeapikey)
+router.route("/stripe/publishablekey").get(getstripeapikey)
 router.route("/stripe/user/new").post(createteacheraccount);
 router.route("/stripe/account/link").post(creatteacheraccountlink);
 router.route("/stripe/teacheraccountstatus").post(checkaccountstatus)
+// router.route('/stripe/paymentintent').post(createPaymentIntent);
+// router.route("/stripe/capturefund").post(captureholdfunds);
+// router.route("/stripe/paymentstatus").post(checkpaymentstatus)
 router.route('/stripe/paymentintent').post(createPaymentIntent);
-router.route("/stripe/capturefund").post(captureholdfunds);
-router.route("/stripe/paymentstatus").post(checkpaymentstatus)
-
+router.route("/stripe/chargeid").get(chargeid)
+router.route("/stripe/transfer").post(transferPayment);
+router.route("/stripe/refund").post(refundcustomer)
 
 
 
