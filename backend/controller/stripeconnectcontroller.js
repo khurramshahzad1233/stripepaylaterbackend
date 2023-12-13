@@ -47,7 +47,7 @@ export const createteacheraccount=catchasyncerror(async(req,res,next)=>{
           },
         //   business_type:"individual",
           business_profile:{
-            url:"https://www.Tutorschamp.com",
+            url:"https://clickaface.com",
           },
         
         });
@@ -75,8 +75,8 @@ export const createteacheraccount=catchasyncerror(async(req,res,next)=>{
             const accountlink = await stripeClient.accountLinks.create({
                 account: connectedId,
                 type:"account_onboarding",
-                return_url:"http://localhost:5000/success/account",
-                refresh_url:"http://localhost:5000/error",
+                return_url:"https://clickaface.com/success/account",
+                refresh_url:"https://clickaface.com/error",
 
                 
                 });
